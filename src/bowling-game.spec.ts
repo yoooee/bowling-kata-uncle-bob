@@ -57,6 +57,10 @@ function rollSpare(g: Game) {
   g.roll(5);
 }
 
+function rollStrike(g: Game) {
+  g.roll(10);
+}
+
 
 describe('Bowling Game', () => {
 
@@ -101,7 +105,7 @@ describe('Bowling Game', () => {
   describe('one strike', () => {
 
     let g: Game = new Game();
-    g.roll(10);
+    rollStrike(g);
     g.roll(3);
     g.roll(4);
     rollMany(g, 16, 0);
