@@ -25,10 +25,7 @@ describe('Bowling Game', () => {
   describe('all gutters', () => {
 
     let g: Game = new Game();
-    let n: number = 20;
-    let pins: number = 0;
-    rollMany(g, n, pins);
-
+    rollMany(g, 20, 0);
 
 
     it('should display a score of 0', () => {
@@ -39,9 +36,7 @@ describe('Bowling Game', () => {
   describe('all Ones', () => {
 
     let g: Game = new Game();
-    for (let i: number = 0; i < 20; i++) {
-      g.roll(1);
-    }
+    rollMany(g, 20, 1);
 
     it('should display a score of 20', () => {
       expect(g.score()).toEqual(20);
