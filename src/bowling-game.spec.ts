@@ -33,6 +33,11 @@ function rollMany(g: Game, n: number, pins: number) {
   }
 }
 
+function rollSpare(g: Game) {
+  g.roll(5);
+  g.roll(5);
+}
+
 
 describe('Bowling Game', () => {
 
@@ -64,8 +69,7 @@ describe('Bowling Game', () => {
 
   describe('one spare', () => {
     let g: Game = new Game();
-    g.roll(5);
-    g.roll(5);
+    rollSpare(g);
     g.roll(3);
     rollMany(g, 17, 0);
 
