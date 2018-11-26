@@ -7,8 +7,16 @@ class Game{
   }
   public score(): number {
     let score: number = 0;
-    for (let i: number = 0; i < this._rolls.length; i++) {
-     score += this._rolls[i];
+    let i: number = 0;
+
+    for (let frame: number = 0; frame < 10; frame++) {
+      if (this._rolls[i] + this._rolls[i + 1] === 10) {
+        score += 10 + this._rolls[i + 2];
+        i += 2;
+      } else {
+        score += this._rolls[i] + this._rolls[i + 1];
+        i += 2;
+      }
     }
     return score;
   }
@@ -48,16 +56,16 @@ describe('Bowling Game', () => {
     });
   });
 
-  //describe('one spare', () => {
-    //let g: Game = new Game();
-    //g.roll(5);
-    //g.roll(5);
-    //g.roll(3);
-    //rollMany(g, 17, 0);
+  describe('one spare', () => {
+    let g: Game = new Game();
+    g.roll(5);
+    g.roll(5);
+    g.roll(3);
+    rollMany(g, 17, 0);
 
-    //it('should display a score of 16', () => {
+    it('should display a score of 16', () => {
 
-      //expect(g.score()).toEqual(16);
-    //});
-  //});
+      expect(g.score()).toEqual(16);
+    });
+  });
 });
