@@ -2,9 +2,13 @@
 describe('Bowling Game', () => {
 
   class Game{
-    public roll(pins: number) {}
+    private _score: number = 0;
+
+    public roll(pins: number) {
+      this._score += pins;
+    }
     public score(): number {
-      return 0;
+      return this._score;
     }
   };
 
@@ -16,7 +20,7 @@ describe('Bowling Game', () => {
   describe('all gutters', () => {
 
     let g: Game = new Game();
-    for (let i = 0; i < 20; i++) {
+    for (let i: number = 0; i < 20; i++) {
       g.roll(0);
     }
 
@@ -25,4 +29,16 @@ describe('Bowling Game', () => {
       expect(g.score()).toEqual(0);
     });
   });
+
+  describe('all Ones', () => {
+
+    let g: Game = new Game();
+    for (let i: number = 0; i < 20; i++) {
+      g.roll(1);
+    }
+
+    it('should display a score of 20', () => {
+      expect(g.score()).toEqual(20);
+    });
+  })
 });
