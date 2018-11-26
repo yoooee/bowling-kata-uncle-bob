@@ -1,13 +1,13 @@
-import { Test } from './index';
+//import { Test } from './index';
 
-describe('Test', () => {
-  let subject;
+//describe('Test', () => {
+  //let subject;
 
-  beforeEach(() => {
-    subject = new Test();
-  });
+  //beforeEach(() => {
+    //subject = new Test();
+  //});
 
-  it('says hi and returns true', () => {
-    expect(subject.sayHi()).toEqual(true);
-  });
-});
+  //it('says hi and returns true', () => {
+    //expect(subject.sayHi()).toEqual(true);
+  //});
+//});
