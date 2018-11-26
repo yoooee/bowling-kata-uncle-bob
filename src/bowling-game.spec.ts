@@ -1,10 +1,8 @@
 class Game{
-  private _score: number = 0;
   private _rolls: Array<number> = [];
   private _currentRoll: number = 0;
 
   public roll(pins: number) {
-    this._score += pins;
     this._rolls[this._currentRoll++] = pins;
   }
   public score(): number {
@@ -12,7 +10,7 @@ class Game{
     for (let i: number = 0; i < this._rolls.length; i++) {
      score += this._rolls[i];
     }
-    return this._score;
+    return score;
   }
 };
 
