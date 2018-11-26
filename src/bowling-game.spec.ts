@@ -11,7 +11,7 @@ class Game{
     let frameIndex: number = 0;
 
     for (let frame: number = 0; frame < 10; frame++) {
-      if (this._rolls[frameIndex] ===10) {
+      if (this._isStrike(frameIndex)) {
         score += 10 + this._strikeBonus(frameIndex);
         frameIndex++;
       } else if (this._isSpare(frameIndex)) {
@@ -23,6 +23,10 @@ class Game{
       }
     }
     return score;
+  }
+
+  private _isStrike(frameIndex: number): boolean {
+    return this._rolls[frameIndex] === 10;
   }
 
   private _sumOfBallsInFrame(frameIndex: number): number {
