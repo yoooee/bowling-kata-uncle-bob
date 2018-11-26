@@ -5,17 +5,18 @@ class Game{
   public roll(pins: number) {
     this._rolls[this._currentRoll++] = pins;
   }
+
   public score(): number {
     let score: number = 0;
-    let i: number = 0;
+    let frameIndex: number = 0;
 
     for (let frame: number = 0; frame < 10; frame++) {
-      if (this._rolls[i] + this._rolls[i + 1] === 10) {
-        score += 10 + this._rolls[i + 2];
-        i += 2;
+      if (this._rolls[frameIndex] + this._rolls[frameIndex + 1] === 10) {
+        score += 10 + this._rolls[frameIndex + 2];
+        frameIndex += 2;
       } else {
-        score += this._rolls[i] + this._rolls[i + 1];
-        i += 2;
+        score += this._rolls[frameIndex] + this._rolls[frameIndex + 1];
+        frameIndex += 2;
       }
     }
     return score;
