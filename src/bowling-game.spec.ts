@@ -11,7 +11,7 @@ class Game{
     let frameIndex: number = 0;
 
     for (let frame: number = 0; frame < 10; frame++) {
-      if (this._rolls[frameIndex] + this._rolls[frameIndex + 1] === 10) {
+      if (this._isSpare(frameIndex)) {
         score += 10 + this._rolls[frameIndex + 2];
         frameIndex += 2;
       } else {
@@ -21,6 +21,10 @@ class Game{
     }
     return score;
   }
+
+  private _isSpare(frameIndex: number): boolean {
+    return this._rolls[frameIndex] + this._rolls[frameIndex + 1] === 10;
+  }
 };
 
 function rollMany(g: Game, n: number, pins: number) {
@@ -28,6 +32,7 @@ function rollMany(g: Game, n: number, pins: number) {
     g.roll(pins);
   }
 }
+
 
 describe('Bowling Game', () => {
 
