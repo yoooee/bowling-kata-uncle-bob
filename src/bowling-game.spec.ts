@@ -113,4 +113,14 @@ describe('Bowling Game', () => {
       expect(g.score()).toEqual(24);
     });
   });
+
+  describe('perfect game', () => {
+    let g: Game = new Game();
+
+    rollMany(g, 12, 10);
+
+    it('should display a score of 300', () => {
+      expect(g.score()).toEqual(300);
+    });
+  });
 });
