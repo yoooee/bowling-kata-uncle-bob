@@ -11,7 +11,10 @@ class Game{
     let frameIndex: number = 0;
 
     for (let frame: number = 0; frame < 10; frame++) {
-      if (this._isSpare(frameIndex)) {
+      if (this._rolls[frameIndex] ===10) {
+        score += 10 + this._rolls[frameIndex + 1] + this._rolls[frameIndex + 2];
+        frameIndex++;
+      } else if (this._isSpare(frameIndex)) {
         score += 10 + this._rolls[frameIndex + 2];
         frameIndex += 2;
       } else {
@@ -76,6 +79,18 @@ describe('Bowling Game', () => {
     it('should display a score of 16', () => {
 
       expect(g.score()).toEqual(16);
+    });
+  });
+
+  describe('one strike', () => {
+
+    let g: Game = new Game();
+    g.roll(10);
+    g.roll(3);
+    g.roll(4);
+    rollMany(g, 16, 0);
+    it('should display a score of 24', () => {
+      expect(g.score()).toEqual(24);
     });
   });
 });
