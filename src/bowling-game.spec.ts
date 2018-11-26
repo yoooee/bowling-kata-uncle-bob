@@ -12,17 +12,29 @@ class Game{
 
     for (let frame: number = 0; frame < 10; frame++) {
       if (this._rolls[frameIndex] ===10) {
-        score += 10 + this._rolls[frameIndex + 1] + this._rolls[frameIndex + 2];
+        score += 10 + this._strikeBonus(frameIndex);
         frameIndex++;
       } else if (this._isSpare(frameIndex)) {
-        score += 10 + this._rolls[frameIndex + 2];
+        score += 10 + this._spareBonus(frameIndex);
         frameIndex += 2;
       } else {
-        score += this._rolls[frameIndex] + this._rolls[frameIndex + 1];
+        score += this._sumOfBallsInFrame(frameIndex);
         frameIndex += 2;
       }
     }
     return score;
+  }
+
+  private _sumOfBallsInFrame(frameIndex: number): number {
+    return this._rolls[frameIndex] + this._rolls[frameIndex + 1];
+  }
+
+  private _spareBonus(frameIndex: number): number {
+    return this._rolls[frameIndex + 2];
+  }
+
+  private _strikeBonus(frameIndex: number): number {
+    return this._rolls[frameIndex + 1] + this._rolls[frameIndex + 2];
   }
 
   private _isSpare(frameIndex: number): boolean {
