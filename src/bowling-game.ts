@@ -28,6 +28,7 @@ export class Game {
   private _isSpare(frameIndex: number): boolean {
     return this._rolls[frameIndex] + this._rolls[frameIndex + 1] === 10;
   }
+
   private _isStrike(frameIndex: number): boolean {
     return this._rolls[frameIndex] === 10;
   }
